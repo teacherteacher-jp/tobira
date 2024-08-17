@@ -21,6 +21,9 @@
     <header>
       <h1><%= link_to("Tobira", root_path) %></h1>
     </header>
+    <% if notice %>
+      <p><%= notice %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
