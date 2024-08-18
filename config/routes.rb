@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
-  get "/auth/discord/callback", to: "sessions#create"
+  get    "/auth/discord/callback", to: "sessions#create"
+  delete "/session",               to: "sessions#destroy", as: "session"
+
   root "root#index"
 end
