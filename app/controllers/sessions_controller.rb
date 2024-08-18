@@ -10,6 +10,13 @@ class SessionsController < ApplicationController
     member = Member.find_or_initialize_by(discord_uid: uid)
     member.update(name:, icon_url:)
 
+    log_in(member)
+
     redirect_to root_path, notice: "ようこそ、#{name}さん！"
+  end
+
+  def destroy
+    log_out
+    redirect_to root_path, notice: "ログアウトしました"
   end
 end
