@@ -10,9 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_31_125222) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_31_142730) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "invitations", force: :cascade do |t|
+    t.integer "inviter_id", null: false
+    t.integer "role_id", null: false
+    t.string "code", null: false
+    t.string "invitee_name", null: false
+    t.datetime "used_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_invitations_on_code", unique: true
+    t.index ["inviter_id"], name: "index_invitations_on_inviter_id"
+    t.index ["role_id"], name: "index_invitations_on_role_id"
+    t.index ["used_at"], name: "index_invitations_on_used_at"
+  end
 
   create_table "members", force: :cascade do |t|
     t.string "name", limit: 32, null: false
