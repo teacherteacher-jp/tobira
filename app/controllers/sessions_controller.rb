@@ -1,4 +1,6 @@
-class SessionsController < ApplicationController
+class SessionsController < ActionController::Base
+  include SessionHelper
+
   def create
     auth_hash = request.env["omniauth.auth"]
     pp auth_hash
@@ -12,11 +14,11 @@ class SessionsController < ApplicationController
 
     log_in(member)
 
-    redirect_to root_path, notice: "ようこそ、#{name}さん！"
+    redirect_to root_path
   end
 
   def destroy
     log_out
-    redirect_to root_path, notice: "ログアウトしました"
+    redirect_to gate_path
   end
 end

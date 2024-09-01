@@ -1,0 +1,14 @@
+<% content_for :title, "Tobira Gate" %>
+
+<p class="p-4">
+  このサイトは、<%= link_to("Teacher Teacher", "https://teacherteacher.jp", target: "_blank") %>のDiscordサーバに新しいメンバーを招待するためのものです。
+</p>
+<p class="mb-2 p-4">
+  招待を受けている方は、下記のボタンよりお進みください。
+</p>
+
+<%= form_tag("/auth/discord", method: "post", data: { turbo: false }, class: "p-4") do %>
+  <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold p-4 rounded">
+    Discordでログイン
+  </button>
+<% end %>

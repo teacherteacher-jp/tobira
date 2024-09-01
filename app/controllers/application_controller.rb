@@ -3,4 +3,12 @@ class ApplicationController < ActionController::Base
 
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
+
+  before_action :gate_check
+
+  def gate_check
+    return if logged_in?
+
+    redirect_to(gate_path)
+  end
 end
