@@ -19,10 +19,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_31_142730) do
     t.integer "role_id", null: false
     t.string "code", null: false
     t.string "invitee_name", null: false
+    t.integer "invitee_id"
     t.datetime "used_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["code"], name: "index_invitations_on_code", unique: true
+    t.index ["invitee_id"], name: "index_invitations_on_invitee_id"
     t.index ["inviter_id"], name: "index_invitations_on_inviter_id"
     t.index ["role_id"], name: "index_invitations_on_role_id"
     t.index ["used_at"], name: "index_invitations_on_used_at"
