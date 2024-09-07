@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_31_142730) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_07_123411) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,7 +32,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_31_142730) do
 
   create_table "members", force: :cascade do |t|
     t.string "name", limit: 32, null: false
-    t.string "icon_url", limit: 2083, null: false
     t.string "discord_uid", limit: 32, null: false
     t.boolean "admin", default: false, null: false
     t.datetime "created_at", null: false
