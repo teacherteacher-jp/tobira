@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get    "/gate",                  to: "gate#index"
   get    "/invitations",           to: "invitations#index"
   get    "/roles",                 to: "roles#index"
+  post   "/roles/sync",            to: "roles/sync#create"
 
   root "root#index"
 end
