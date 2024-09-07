@@ -8,7 +8,11 @@
           <%= role.name %>
         </td>
         <td class="px-6 py-2 text-right">
-          <%= role.usable %>
+          <% if role.usable %>
+            <%= link_to("使", role_usable_path(role), data: { turbo_method: :delete }, class: "inline-block w-[40px] text-center px-2 py-1 bg-blue-500 text-white rounded") %>
+          <% else %>
+            <%= link_to("未", role_usable_path(role), data: { turbo_method: :post }, class: "inline-block w-[40px] text-center px-2 py-1 bg-red-500 text-white rounded") %>
+          <% end %>
         </td>
       </tr>
     <% end %>
