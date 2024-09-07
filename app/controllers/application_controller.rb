@@ -11,4 +11,10 @@ class ApplicationController < ActionController::Base
 
     redirect_to(gate_path)
   end
+
+  def admin_only
+    return if current_member&.admin?
+
+    redirect_to(root_path)
+  end
 end

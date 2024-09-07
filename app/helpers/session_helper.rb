@@ -14,4 +14,10 @@ module SessionHelper
   def log_out
     reset_session
   end
+
+  def admin?
+    return false unless logged_in?
+
+    current_member.admin?
+  end
 end
