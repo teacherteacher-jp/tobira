@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get    "/gate",                  to: "gate#index"
   get    "/invitations",           to: "invitations#index"
   get    "/roles",                 to: "roles#index"
+  post   "/roles/sync",            to: "roles/sync#create"
+  post   "/roles/:role_id/usable", to: "roles/usable#create", as: :role_usable
+  delete "/roles/:role_id/usable", to: "roles/usable#destroy"
 
   root "root#index"
 end
