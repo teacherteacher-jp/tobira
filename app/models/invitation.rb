@@ -1,5 +1,6 @@
 class Invitation < ApplicationRecord
   belongs_to :inviter, class_name: "Member", foreign_key: :inviter_id
+  belongs_to :role
 
   validates :inviter_id, presence: true
   validates :role_id, presence: true
@@ -8,6 +9,7 @@ class Invitation < ApplicationRecord
 
   before_validation :set_code
   before_validation :strip_invitee_name
+  after_create :notify_to_discord_admin
 
   class << self
     def generate_code
@@ -28,5 +30,14 @@ class Invitation < ApplicationRecord
 
   def strip_invitee_name
     self.invitee_name = invitee_name.strip
+  end
+
+  def notify_to_discord_admin
+    Discord::Bot.new.send_message(
+      channel_or_thread_id: Rails.application.credentials.discord.admin_channel_id,
+      content: <<~CONTENT
+        #{inviter.name}が「#{invitee_name}」を「#{role.name}」として招待するためのコードを発行しました :ticket:
+      CONTENT
+    )
   end
 end
