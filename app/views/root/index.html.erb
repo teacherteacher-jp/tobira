@@ -4,13 +4,18 @@
       <%= link_to("招待の管理", invitations_path, class: "inline-block w-full bg-blue-500 text-white p-2 text-center rounded") %>
     </li>
     <li class="mb-4">
-      <%= link_to("Roleの管理", roles_path, class: "inline-block w-full bg-blue-500 text-white p-2 text-center rounded") %>
+      <%= link_to("ロールの管理", roles_path, class: "inline-block w-full bg-blue-500 text-white p-2 text-center rounded") %>
     </li>
   </ul>
 <% else %>
-  <p class="text-center mt-8 p-4">
-    ここに招待コードを入力するフォームを配置する予定
-  </p>
+  <%= form_with(url: invitations_acceptance_path, method: :post, class: "px-3") do |form| %>
+    <p class="mb-3">
+      <%= form.text_field(:code, placeholder: "TT-XXXXXX (招待コード)", class: "w-full") %>
+    </p>
+    <p>
+      <%= form.submit("招待を受ける", class: "w-full bg-blue-500 hover:bg-blue-700 text-white p-2 text-center rounded cursor-pointer") %>
+    </p>
+  <% end %>
 <% end %>
 
 <p class="text-center mt-8 p-4">
