@@ -13,7 +13,7 @@ class Invitation < ApplicationRecord
 
   class << self
     def generate_code
-      characters = ('A'..'Z').to_a + ('0'..'9').to_a
+      characters = ("A".."Z").to_a + ("0".."9").to_a
       "TT-" + 6.times.map { characters.sample }.join
     end
   end
