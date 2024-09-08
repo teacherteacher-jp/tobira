@@ -18,6 +18,12 @@ class Invitation < ApplicationRecord
     end
   end
 
+  def guide_text
+    <<~TEXT
+      (あとで実装します)
+    TEXT
+  end
+
   def set_code
     return if code.present?
 
