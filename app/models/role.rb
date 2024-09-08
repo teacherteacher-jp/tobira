@@ -2,6 +2,8 @@ class Role < ApplicationRecord
   validates :original_id, presence: true
   validates :name, presence: true
 
+  scope :usable, -> { where(usable: true) }
+
   class << self
     def sync_with_server
       roles = Discord::Bot.new.roles

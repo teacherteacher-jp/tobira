@@ -2,6 +2,18 @@ class InvitationsController < ApplicationController
   before_action :admin_only
 
   def index
-    @invitations = Invitation.all
+    @new_invitation = Invitation.new
+    @invitations = Invitation.order(id: :desc)
+  end
+
+  def create
+    invitation = current_member.invitations.build(invitation_params)
+    invitation.save
+
+    redirect_to(invitations_path)
+  end
+
+  def invitation_params
+    params.require(:invitation).permit(:invitee_name, :role_id)
   end
 end

@@ -1,3 +1,59 @@
 <% content_for(:title, "招待の管理") %>
 
-<%= @invitations.count %>
+<h2 class="text-2xl font-bold text-center px-3 mb-3">
+  招待の作成
+</h2>
+
+<%= form_with(model: @new_invitation, url: invitations_path, method: :post, class: "mb-10 px-3") do |form| %>
+  <p class="mb-2">
+    <%= form.text_field(:invitee_name, placeholder: "招待する相手の呼び名", class: "w-full") %>
+  </p>
+  <p class="mb-2">
+    <%= form.select(:role_id, Role.usable.map { |role| [role.name, role.id] }, {}, class: "w-full") %>
+  </p>
+  <p>
+    <%= form.submit("作成する", class: "w-full text-center p-2 bg-blue-500 text-white rounded hover:bg-blue-700 cursor-pointer") %>
+  </p>
+<% end %>
+
+<h2 class="text-2xl font-bold text-center px-3 mb-3">
+  招待の一覧
+</h2>
+
+<ul class="px-3">
+  <% @invitations.each do |invitation| %>
+  <li class="mt-4 pt-4 border-t border-gray-300">
+    <table class="w-full">
+      <tr>
+        <th class="w-[150px]">招待ID</th>
+        <td><%= invitation.id %></td>
+      </tr>
+      <tr>
+        <th>作成者</th>
+        <td><%= invitation.inviter.name %></td>
+      </tr>
+      <tr>
+        <th>招待する相手</th>
+        <td><%= invitation.invitee_name %></td>
+      </tr>
+      <tr>
+        <th>付与するロール</th>
+        <td><%= invitation.role.name %></td>
+      </tr>
+      <tr>
+        <th>招待コード</th>
+        <td><%= invitation.code %></td>
+      </tr>
+      <tr>
+        <th>招待作成日時</th>
+        <td><%= invitation.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+      </tr>
+      <tr>
+        <th>招待使用日時</th>
+        <td><%= invitation.used_at&.strftime("%Y-%m-%d %H:%M") %></td>
+      </tr>
+    </table>
+    <textarea class="w-full h-[100px] mt-2 p-2 border border-gray-300 rounded"><%= invitation.guide_text %></textarea>
+  </li>
+  <% end %>
+</ul>
