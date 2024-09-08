@@ -32,7 +32,7 @@ class Invitation < ApplicationRecord
         content: <<~CONTENT,
           「#{invitee_name}」 <@!#{member.discord_uid}> に「#{role.name}」を付与しました :dart:
         CONTENT
-        allowed_mentions: { parse: ["users"] },
+        allowed_mentions: { parse: [ "users" ] },
       )
       update!(used_at: Time.current, invitee_id: member.id)
     else
