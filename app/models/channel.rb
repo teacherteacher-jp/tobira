@@ -32,4 +32,8 @@ class Channel < ApplicationRecord
       Channel.where.not(original_id: channels.map { _1.dig("id") }).destroy_all
     end
   end
+
+  def name_with_category
+    category ? "[#{category.name}] #{name}" : name
+  end
 end

@@ -1,4 +1,7 @@
 class Role < ApplicationRecord
+  has_many :role_channels, dependent: :destroy
+  has_many :channels, through: :role_channels
+
   validates :original_id, presence: true
   validates :name, presence: true
 
@@ -22,5 +25,9 @@ class Role < ApplicationRecord
 
       Role.where.not(original_id: roles_without_bot.map { _1.dig("id") }).destroy_all
     end
+  end
+
+  def channel
+    channels.first
   end
 end
