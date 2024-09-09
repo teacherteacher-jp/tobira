@@ -20,6 +20,10 @@ module Discord
       JSON.parse(@connection.get("#{BASE_PATH}/guilds/#{@server_id}/roles").body)
     end
 
+    def channels
+      JSON.parse(@connection.get("#{BASE_PATH}/guilds/#{@server_id}/channels").body)
+    end
+
     def send_message(channel_or_thread_id:, content: nil, embeds: nil, allowed_mentions: nil)
       @connection.post("#{BASE_PATH}/channels/#{channel_or_thread_id}/messages") do |req|
         req.body = { content:, embeds:, allowed_mentions: }.to_json
