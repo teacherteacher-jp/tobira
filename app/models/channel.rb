@@ -6,6 +6,7 @@ class Channel < ApplicationRecord
   validates :type_id, presence: true
   validates :position, presence: true
 
+  # https://discord.com/developers/docs/resources/channel#channel-object-channel-types
   enum :type_id, {
     text: 0,
     voice: 2,
