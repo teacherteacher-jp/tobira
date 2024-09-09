@@ -13,7 +13,7 @@ class Channel < ApplicationRecord
     category: 4,
     announcement: 5,
     stage: 13,
-    forum: 15,
+    forum: 15
   }
 
   class << self
