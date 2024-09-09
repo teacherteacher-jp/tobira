@@ -1,0 +1,20 @@
+<% content_for :title, "チャンネルの管理" %>
+
+<h2 class="text-2xl font-bold text-center px-3 mb-3">
+  チャンネルの管理
+</h2>
+
+<section class="px-4">
+  <% @categories_and_channels.each do |category, channels| %>
+    <h3 class="text-xl font-bold mb-2"><%= category.name %></h3>
+    <ul class="mb-4">
+      <% channels.each do |channel| %>
+        <li class="mb-2"><%= channel.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</section>
+
+<p class="my-4 px-4 pb-6">
+  <%= link_to("Discordのチャンネルと同期する", channels_sync_path, data: { turbo_method: :post }, class: "inline-block w-full text-center p-2 bg-blue-500 hover:bg-blue-700 text-white rounded") %>
+</p>

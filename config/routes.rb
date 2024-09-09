@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post   "/roles/sync",             to: "roles/sync#create"
   post   "/roles/:role_id/usable",  to: "roles/usable#create", as: :role_usable
   delete "/roles/:role_id/usable",  to: "roles/usable#destroy"
+  get    "/channels",               to: "channels#index"
+  post   "/channels/sync",          to: "channels/sync#create"
 
   root "root#index"
 end
