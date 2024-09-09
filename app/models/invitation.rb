@@ -25,15 +25,28 @@ class Invitation < ApplicationRecord
     bot = Discord::Bot.new
     result = bot.invite(user_id: member.discord_uid, user_token: member.access_token)
     pp result
+
     if result.status == 201
-      bot.add_role(user_id: member.discord_uid, role_id: role.original_id)
-      bot.send_message(
+      pp bot.add_role(user_id: member.discord_uid, role_id: role.original_id)
+
+      pp bot.send_message(
         channel_or_thread_id: Rails.application.credentials.discord.admin_channel_id,
         content: <<~CONTENT,
           「#{invitee_name}」 <@!#{member.discord_uid}> に「#{role.name}」を付与しました :dart:
         CONTENT
         allowed_mentions: { parse: [ "users" ] },
       )
+
+      if role.channel
+        pp bot.send_message(
+          channel_or_thread_id: role.channel.original_id,
+          content: <<~CONTENT,
+            <@!#{member.discord_uid}> さんがやってきました、ようこそ〜！:clap:
+          CONTENT
+          allowed_mentions: { parse: [ "users" ] },
+        )
+      end
+
       update!(used_at: Time.current, invitee_id: member.id)
     else
     end

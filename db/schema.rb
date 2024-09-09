@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_09_124946) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_09_135049) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +53,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_09_124946) do
     t.string "access_token"
   end
 
+  create_table "role_channels", force: :cascade do |t|
+    t.bigint "role_id", null: false
+    t.bigint "channel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_role_channels_on_channel_id"
+    t.index ["role_id", "channel_id"], name: "index_role_channels_on_role_id_and_channel_id", unique: true
+    t.index ["role_id"], name: "index_role_channels_on_role_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "original_id", null: false
     t.string "name", null: false
@@ -62,4 +72,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_09_124946) do
     t.index ["original_id"], name: "index_roles_on_original_id", unique: true
     t.index ["usable"], name: "index_roles_on_usable"
   end
+
+  add_foreign_key "role_channels", "channels"
+  add_foreign_key "role_channels", "roles"
 end

@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   delete "/roles/:role_id/usable",  to: "roles/usable#destroy"
   get    "/channels",               to: "channels#index"
   post   "/channels/sync",          to: "channels/sync#create"
+  post   "/role_channels",          to: "role_channels#create"
+  delete "/role_channels/:rc_id",   to: "role_channels#destroy", as: :role_channel
 
   root "root#index"
 end
