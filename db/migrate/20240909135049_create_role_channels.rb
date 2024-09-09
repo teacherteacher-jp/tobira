@@ -6,6 +6,6 @@ class CreateRoleChannels < ActiveRecord::Migration[7.2]
       t.timestamps
     end
 
-    add_index :role_channels, [:role_id, :channel_id], unique: true
+    add_index :role_channels, [ :role_id, :channel_id ], unique: true
   end
 end
