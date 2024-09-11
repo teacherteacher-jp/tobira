@@ -32,7 +32,7 @@ class Invitation < ApplicationRecord
       pp bot.send_message(
         channel_or_thread_id: Rails.application.credentials.discord.admin_channel_id,
         content: <<~CONTENT,
-          「#{invitee_name}」 <@!#{member.discord_uid}> に「#{role.name}」を付与しました :dart:
+          「#{invitee_name}」さん <@!#{member.discord_uid}> に「#{role.name}」を付与しました :dart:
         CONTENT
         allowed_mentions: { parse: [ "users" ] },
       )
@@ -54,7 +54,11 @@ class Invitation < ApplicationRecord
 
   def guide_text
     <<~TEXT
-      (あとで実装します)
+      以下の手順に従って、Discordのコミュニティにご参加ください。
+
+      1. Discordのアカウントを用意する
+      2. #{Rails.application.credentials.app.url} にログインする
+      3. 招待コード #{code} を入力する
     TEXT
   end
 
@@ -76,7 +80,7 @@ class Invitation < ApplicationRecord
     Discord::Bot.new.send_message(
       channel_or_thread_id: Rails.application.credentials.discord.admin_channel_id,
       content: <<~CONTENT
-        #{inviter.name}が「#{invitee_name}」を「#{role.name}」として招待するためのコードを発行しました :ticket:
+        #{inviter.name}が「#{invitee_name}」さんを「#{role.name}」として招待するためのコードを発行しました :ticket:
       CONTENT
     )
   end
