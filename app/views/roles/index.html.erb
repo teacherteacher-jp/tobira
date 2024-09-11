@@ -13,10 +13,10 @@
   </div>
   <% if role.usable %>
     <div class="mb-4 px-4 pb-4 border-b border-gray-200">
+    <p class="mb-2 p-2 border border-gray-200 rounded">
+      招待時の通知先: <%= role.channel&.name || "未設定" %>
+    </p>
     <% if role.channel %>
-      <p class="mb-2 p-2 border border-gray-200 rounded text-center">
-        <%= role.channel.name_with_category %>
-      </p>
       <%= link_to("通知先設定を解除する", role_channel_path(role.role_channels.first), data: { turbo_method: :delete }, class: "inline-block w-full text-center p-2 bg-red-500 hover:bg-red-700 text-white rounded") %>
     <% else %>
       <%= form_with(model: RoleChannel.new) do |form| %>
