@@ -26,7 +26,7 @@ class Invitation < ApplicationRecord
     result = bot.invite(user_id: member.discord_uid, user_token: member.access_token)
     pp result
 
-    if result.status.in?([200, 204])
+    if result.status.in?([ 200, 204 ])
       pp bot.add_role(user_id: member.discord_uid, role_id: role.original_id)
 
       pp bot.send_message(
