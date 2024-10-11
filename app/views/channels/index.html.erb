@@ -6,7 +6,7 @@
 
 <section class="px-4">
   <% @categories_and_channels.each do |category, channels| %>
-    <h3 class="text-xl font-bold mb-2"><%= category.name %></h3>
+    <h3 class="text-xl font-bold mb-2"><%= category&.name || "カテゴリなし"%></h3>
     <ul class="mb-4">
       <% channels.each do |channel| %>
         <li class="mb-2"><%= channel.name %></li>
