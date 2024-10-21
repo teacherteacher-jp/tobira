@@ -52,6 +52,10 @@ class Invitation < ApplicationRecord
     end
   end
 
+  def used?
+    !used_at.nil?
+  end
+
   def guide_text
     <<~TEXT
       以下の手順に従って、Discordのコミュニティにご参加ください。
