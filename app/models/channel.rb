@@ -21,12 +21,12 @@ class Channel < ApplicationRecord
       channels = Discord::Bot.new.channels
 
       channels.each do |channel|
-        Channel.find_or_create_by(original_id: channel.dig("id")) do |c|
-          c.name = channel.dig("name")
-          c.type_id = channel.dig("type")
-          c.category_id = channel.dig("parent_id")
-          c.position = channel.dig("position")
-        end
+        c = Channel.find_or_initialize_by(original_id: channel.dig("id"))
+        c.name = channel.dig("name")
+        c.type_id = channel.dig("type")
+        c.category_id = channel.dig("parent_id")
+        c.position = channel.dig("position")
+        c.save
       end
 
       Channel.where.not(original_id: channels.map { _1.dig("id") }).destroy_all
