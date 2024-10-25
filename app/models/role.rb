@@ -18,9 +18,9 @@ class Role < ApplicationRecord
       }
 
       roles_without_bot.each do |role|
-        Role.find_or_create_by(original_id: role["id"]) do |r|
-          r.name = role["name"]
-        end
+        r = Role.find_or_initialize_by(original_id: role["id"])
+        r.name = role["name"]
+        r.save
       end
 
       Role.where.not(original_id: roles_without_bot.map { _1.dig("id") }).destroy_all
