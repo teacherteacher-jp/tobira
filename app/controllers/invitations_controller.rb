@@ -3,7 +3,7 @@ class InvitationsController < ApplicationController
 
   def index
     @new_invitation = Invitation.new
-    @invitations = Invitation.order(id: :desc)
+    @invitations = Invitation.not_used.order(id: :desc)
   end
 
   def create

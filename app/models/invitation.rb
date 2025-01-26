@@ -13,6 +13,7 @@ class Invitation < ApplicationRecord
   after_create :notify_to_discord_admin
 
   scope :not_used, -> { where(used_at: nil) }
+  scope :already_used, -> { where.not(used_at: nil) }
 
   class << self
     def generate_code
