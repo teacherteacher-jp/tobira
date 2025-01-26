@@ -1,0 +1,13 @@
+<% content_for(:title, "使用済みの招待") %>
+
+<h2 class="text-2xl font-bold text-center px-3 mb-3">
+  使用済みの招待
+</h2>
+
+<p class="text-center px-3 mb-3">
+  <%= link_to("未使用の招待", invitations_path, class: "text-blue-500 hover:text-blue-700") %>
+</p>
+
+<ul class="px-3">
+  <%= render(partial: "invitations/single", collection: @invitations, as: :invitation) %>
+</ul>
