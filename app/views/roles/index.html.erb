@@ -6,23 +6,23 @@
     <span class="flex-1 inline-block py-1"><%= role.name %></span>
 
     <% if role.usable %>
-      <%= link_to("使", role_usable_path(role), data: { turbo_method: :delete }, class: "inline-block w-[40px] text-center px-2 py-1 bg-blue-500 text-white rounded") %>
+      <%= link_to("使", role_usable_path(role), data: { turbo_method: :delete }, class: "inline-block w-[40px] text-center px-2 py-1 bg-blue-500 text-white rounded-sm") %>
     <% else %>
-      <%= link_to("未", role_usable_path(role), data: { turbo_method: :post }, class: "inline-block w-[40px] text-center px-2 py-1 bg-red-500 text-white rounded") %>
+      <%= link_to("未", role_usable_path(role), data: { turbo_method: :post }, class: "inline-block w-[40px] text-center px-2 py-1 bg-red-500 text-white rounded-sm") %>
     <% end %>
   </div>
   <% if role.usable %>
     <div class="mb-4 px-4 pb-4 border-b border-gray-200">
-    <p class="mb-2 p-2 border border-gray-200 rounded">
+    <p class="mb-2 p-2 border border-gray-200 rounded-sm">
       招待時の通知先: <%= role.channel&.name || "未設定" %>
     </p>
     <% if role.channel %>
-      <%= link_to("通知先設定を解除する", role_channel_path(role.role_channels.first), data: { turbo_method: :delete }, class: "inline-block w-full text-center p-2 bg-red-500 hover:bg-red-700 text-white rounded") %>
+      <%= link_to("通知先設定を解除する", role_channel_path(role.role_channels.first), data: { turbo_method: :delete }, class: "inline-block w-full text-center p-2 bg-red-500 hover:bg-red-700 text-white rounded-sm") %>
     <% else %>
       <%= form_with(model: RoleChannel.new) do |form| %>
         <%= form.hidden_field :role_id, value: role.id %>
-        <%= form.select :channel_id, @channels.map { |c| [c.name_with_category, c.id] }, { include_blank: "チャンネルを選択" }, class: "inline-block w-full mb-2 p-2 rounded" %>
-        <%= form.submit "通知先を設定する", class: "inline-block w-full text-center p-2 bg-blue-500 hover:bg-blue-700 text-white rounded cursor-pointer" %>
+        <%= form.select :channel_id, @channels.map { |c| [c.name_with_category, c.id] }, { include_blank: "チャンネルを選択" }, class: "inline-block w-full mb-2 p-2 rounded-sm" %>
+        <%= form.submit "通知先を設定する", class: "inline-block w-full text-center p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-sm cursor-pointer" %>
       <% end %>
     <% end %>
     </div>
@@ -31,5 +31,5 @@
 </section>
 
 <p class="px-4">
-  <%= link_to("Discordのロールと同期する", roles_sync_path, data: { turbo_method: :post }, class: "inline-block w-full text-center p-2 bg-blue-500 hover:bg-blue-700 text-white rounded") %>
+  <%= link_to("Discordのロールと同期する", roles_sync_path, data: { turbo_method: :post }, class: "inline-block w-full text-center p-2 bg-blue-500 hover:bg-blue-700 text-white rounded-sm") %>
 </p>
