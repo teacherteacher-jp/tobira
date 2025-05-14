@@ -1,13 +1,13 @@
 <% if admin? %>
   <ul class="p-4">
     <li class="mb-4">
-      <%= link_to("招待の管理", invitations_path, class: "inline-block w-full bg-blue-500 text-white p-2 text-center rounded") %>
+      <%= link_to("招待の管理", invitations_path, class: "inline-block w-full bg-blue-500 text-white p-2 text-center rounded-sm") %>
     </li>
     <li class="mb-4">
-      <%= link_to("ロールの管理", roles_path, class: "inline-block w-full bg-blue-500 text-white p-2 text-center rounded") %>
+      <%= link_to("ロールの管理", roles_path, class: "inline-block w-full bg-blue-500 text-white p-2 text-center rounded-sm") %>
     </li>
     <li class="mb-4">
-      <%= link_to("チャンネルの管理", channels_path, class: "inline-block w-full bg-blue-500 text-white p-2 text-center rounded") %>
+      <%= link_to("チャンネルの管理", channels_path, class: "inline-block w-full bg-blue-500 text-white p-2 text-center rounded-sm") %>
     </li>
   </ul>
 <% else %>
@@ -16,11 +16,11 @@
       <%= form.text_field(:code, placeholder: "TT-XXXXXX (招待コード)", class: "w-full") %>
     </p>
     <p>
-      <%= form.submit("招待を受ける", class: "w-full bg-blue-500 hover:bg-blue-700 text-white p-2 text-center rounded cursor-pointer") %>
+      <%= form.submit("招待を受ける", class: "w-full bg-blue-500 hover:bg-blue-700 text-white p-2 text-center rounded-sm cursor-pointer") %>
     </p>
   <% end %>
 <% end %>
 
 <p class="text-center mt-8 p-4">
-  <%= link_to "ログアウト", session_path, data: { turbo_method: :delete }, class: "inline-block w-full border border-gray-200 py-2 rounded" %>
+  <%= link_to "ログアウト", session_path, data: { turbo_method: :delete }, class: "inline-block w-full border border-gray-200 py-2 rounded-sm" %>
 </p>
