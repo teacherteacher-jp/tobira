@@ -9,7 +9,7 @@ class Invitations::AcceptanceController < ApplicationController
       redirect_to(root_path, notice: "招待コード「#{code}」は使用済みです。Discordサーバーに参加できているかご確認ください。")
     else
       invitation.used_by!(current_member)
-      redirect_to(root_path, notice: "Discordサーバに招待しました！")
+      redirect_to(root_path, notice: "Discordサーバに招待しました！Discordを開いてご確認ください。")
     end
   end
 end

@@ -14,7 +14,10 @@ class SessionsController < ActionController::Base
 
     log_in(member)
 
-    redirect_to root_path
+    # return_toパラメータがある場合はそちらにリダイレクト
+    return_to = session[:return_to] || params[:return_to] || root_path
+    session.delete(:return_to)
+    redirect_to return_to
   end
 
   def destroy

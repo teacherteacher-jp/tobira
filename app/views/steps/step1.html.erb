@@ -1,0 +1,70 @@
+<% content_for :title, "Discordアカウントの準備" %>
+
+<div class="p-4">
+  <div class="flex items-center mb-6">
+    <span class="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">1</span>
+    <h2 class="text-2xl font-bold text-gray-800">Discordアカウントの準備</h2>
+  </div>
+
+  <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+    <p class="text-blue-800">
+      <strong><%= @invitation.invitee_name %></strong> さん<br>
+      Teacher TeacherのDiscordサーバに参加するには、Discordアカウントが必要です。
+    </p>
+  </div>
+
+  <h3 class="text-lg font-bold mb-4">💡 すでにDiscordアカウントをお持ちの方</h3>
+
+  <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+    <p class="text-green-800">
+      すでにDiscordアカウントをお持ちの場合は、次のステップに進んでください。
+    </p>
+  </div>
+
+  <div class="text-center mb-8">
+    <%= link_to "すでにアカウントを持っています", "/step2?code=#{@code}", class: "inline-block w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300 mb-4" %>
+  </div>
+
+  <h3 class="text-lg font-bold mb-4">🆕 Discordが初めての方</h3>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-white border border-gray-200 rounded-lg p-4">
+      <h4 class="font-bold text-gray-800 mb-2">📱 Discordとは？</h4>
+      <p class="text-gray-600 text-sm">
+        Discordは、テキストチャットや音声通話ができるコミュニケーションプラットフォームです。
+        Teacher Teacherでは、メンバー同士の交流や情報共有に使用しています。
+      </p>
+    </div>
+
+    <div class="bg-white border border-gray-200 rounded-lg p-4">
+      <h4 class="font-bold text-gray-800 mb-2">🔧 アカウント作成手順</h4>
+      <ol class="text-sm text-gray-600 space-y-2">
+        <li>1. 下記リンクからDiscord公式サイトにアクセス</li>
+        <li>2. 「登録」ボタンをクリック</li>
+        <li>3. メールアドレスとパスワードを入力</li>
+        <li>4. ユーザー名を設定</li>
+        <li>5. メール認証を完了</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="text-center mb-6">
+    <%= link_to "Discordアカウントを作成する", "https://discord.com/register", target: "_blank", class: "inline-block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300" %>
+  </div>
+
+  <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+    <p class="text-yellow-800 text-sm">
+      <strong>💡 ヒント:</strong> アカウント作成後は、このページに戻って次のステップに進んでください。
+    </p>
+  </div>
+
+  <div class="text-center">
+    <%= link_to "アカウント作成が完了しました", "/step2?code=#{@code}", class: "inline-block w-full bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300" %>
+  </div>
+
+  <div class="mt-4 text-center">
+    <p class="text-gray-600 text-sm">
+      招待コード: <span class="font-mono bg-gray-200 px-2 py-1 rounded"><%= @code %></span>
+    </p>
+  </div>
+</div>

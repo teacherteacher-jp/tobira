@@ -59,11 +59,8 @@ class Invitation < ApplicationRecord
 
   def guide_text
     <<~TEXT
-      以下の手順に従って、Discordのコミュニティにご参加ください。
-
-      1. Discordのアカウントを用意する
-      2. #{Rails.application.credentials.app.url} にログインする
-      3. 招待コード #{code} を入力する
+      🔗 ステップバイステップ案内
+      #{Rails.application.credentials.app.url}/step0?code=#{code}
     TEXT
   end
 
