@@ -1,0 +1,49 @@
+<% content_for :title, "Teacher Teacherへようこそ！" %>
+
+<div class="p-4">
+  <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">
+    Teacher Teacherの<br>Discordサーバへご招待
+  </h2>
+
+  <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+    <p class="text-blue-800">
+      <strong><%= @invitation.invitee_name %></strong> さん、ようこそ！<br>
+      あなたを <strong><%= @invitation.role.name %></strong> としてTeacher TeacherのDiscordコミュニティにご招待いたします。
+    </p>
+  </div>
+
+  <h3 class="text-lg font-bold mb-4">📋 招待の手順</h3>
+
+  <div class="space-y-3 mb-6">
+    <div class="flex items-center p-3 bg-gray-100 rounded-lg">
+      <span class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">1</span>
+      <span>Discordアカウントの準備</span>
+    </div>
+
+    <div class="flex items-center p-3 bg-gray-100 rounded-lg">
+      <span class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">2</span>
+      <span>Discordアカウントで認証</span>
+    </div>
+
+    <div class="flex items-center p-3 bg-gray-100 rounded-lg">
+      <span class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">3</span>
+      <span>サーバーへの参加完了</span>
+    </div>
+  </div>
+
+  <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+    <p class="text-yellow-800 text-sm">
+      <strong>💡 ヒント:</strong> このプロセスは数分で完了します。もしDiscordが初めての方でも、順を追って案内しますのでご安心ください。
+    </p>
+  </div>
+
+  <div class="text-center">
+    <%= link_to "操作を進める", "/step1?code=#{@code}", class: "inline-block w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300" %>
+  </div>
+
+  <div class="mt-4 text-center">
+    <p class="text-gray-600 text-sm">
+      招待コード: <span class="font-mono bg-gray-200 px-2 py-1 rounded"><%= @code %></span>
+    </p>
+  </div>
+</div>

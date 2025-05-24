@@ -19,5 +19,11 @@ Rails.application.routes.draw do
   post   "/role_channels",            to: "role_channels#create"
   delete "/role_channels/:rc_id",     to: "role_channels#destroy", as: :role_channel
 
+  # ステップバイステップガイド
+  get    "/step0",                    to: "steps#step0"
+  get    "/step1",                    to: "steps#step1"
+  get    "/step2",                    to: "steps#step2"
+  get    "/step3",                    to: "steps#step3"
+
   root "root#index"
 end

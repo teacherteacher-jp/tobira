@@ -1,0 +1,48 @@
+<% content_for :title, "招待完了" %>
+
+<div class="p-4">
+  <div class="flex items-center mb-6">
+    <span class="w-10 h-10 bg-green-500 text-white rounded-full flex items-center justify-center font-bold mr-3">3</span>
+    <h2 class="text-2xl font-bold text-gray-800">招待完了</h2>
+  </div>
+
+  <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+    <p class="text-green-800">
+      <strong><%= @invitation.invitee_name %></strong> さん<br>
+      Discordアカウントの確認が完了しました！<br>
+      これで準備は整いました。
+    </p>
+  </div>
+
+  <div class="space-y-4 mb-6">
+    <div class="bg-white border border-gray-200 rounded-lg p-4">
+      <h4 class="font-bold text-gray-800 mb-2">✅ 確認完了</h4>
+      <ul class="text-sm text-gray-600 space-y-2">
+        <li>• 招待コード: <span class="font-mono bg-gray-100 px-2 py-1 rounded"><%= @code %></span></li>
+        <li>• 招待される方: <strong><%= @invitation.invitee_name %></strong></li>
+        <li>• 付与されるロール: <strong><%= @invitation.role.name %></strong></li>
+        <li>• Discordアカウント: <strong><%= current_member&.name || "認証済み" %></strong></li>
+      </ul>
+    </div>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+      <h4 class="font-bold text-blue-800 mb-2">🚀 最後のステップ</h4>
+      <p class="text-blue-700 text-sm">
+        下のボタンを押すと、Teacher TeacherのDiscordサーバに自動的に招待されます。
+        同時に、指定されたロールも付与されます。
+      </p>
+    </div>
+  </div>
+
+  <div class="text-center mb-6">
+    <%= form_with url: "/invitations/acceptance", method: :post, local: true do |form| %>
+      <%= form.hidden_field :code, value: @code %>
+      <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-lg transition duration-300 flex items-center justify-center">
+        <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        Teacher Teacherサーバに参加する
+      </button>
+    <% end %>
+  </div>
+</div>
