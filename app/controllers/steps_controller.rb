@@ -1,7 +1,7 @@
 class StepsController < ApplicationController
-  skip_before_action :gate_check, only: [:step0, :step1, :step2]
+  skip_before_action :gate_check, only: [ :step0, :step1, :step2 ]
   before_action :set_invitation_by_code
-  before_action :ensure_logged_in, only: [:step3]
+  before_action :ensure_logged_in, only: [ :step3 ]
 
   def step0
     notify_progress("「#{@invitation.invitee_name}」さんがステップ0「ご案内」にアクセスしました")
