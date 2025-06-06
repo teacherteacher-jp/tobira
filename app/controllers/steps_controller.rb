@@ -34,7 +34,7 @@ class StepsController < ApplicationController
 
     if @invitation.used?
       redirect_to gate_path, notice: "招待コード「#{code}」は使用済みです。Discordサーバに参加できているかご確認ください。"
-      notify_progress("使用済みの招待コード「#{code}」が入力されました")
+      notify_progress("使用済みの招待コード「#{code}」(#{@invitation.invitee_name}さん用に発行したもの)が入力されました")
       return
     end
 
