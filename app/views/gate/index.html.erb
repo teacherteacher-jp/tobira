@@ -1,12 +1,28 @@
-<p class="p-4">
-  このアプリケーションは、<%= link_to("Teacher Teacher", "https://teacherteacher.jp", target: "_blank", class: "underline") %>のDiscordサーバに新しいメンバーを招待するためのものです。
-</p>
-<p class="mb-2 px-4">
-  招待を受けている方は、下記のボタンよりお進みください。
-</p>
+<div class="p-4">
+  <p class="mb-4">
+    このアプリケーションは、<%= link_to("Teacher Teacher", "https://teacherteacher.jp", target: "_blank", class: "underline") %>のDiscordサーバに新しいメンバーを招待するためのものです。
+  </p>
 
-<%= form_tag("/auth/discord", method: "post", data: { turbo: false }, class: "p-4") do %>
-  <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold p-4 rounded-sm">
-    Discordでログイン
-  </button>
-<% end %>
+  <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+    <p class="text-blue-800">
+      <strong>📧 招待を受けている方へ</strong><br>
+      お送りした招待URLからアクセスしてください。
+    </p>
+  </div>
+
+  <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+    <p class="text-yellow-800">
+      <strong>⚠️ スマートフォンをお使いの方へ</strong><br>
+      <span class="text-sm">
+        LINEやGmailといったアプリの「アプリ内ブラウザ」でこのページにアクセスしている場合、招待がうまくいかないことがあります。<br>
+        SafariやChromeといったブラウザでこのページを開き直してからお試しください。
+      </span>
+    </p>
+  </div>
+
+  <div class="bg-gray-50 border border-gray-200 rounded p-4">
+    <p class="text-gray-700 text-sm">
+      招待URLが見つからない場合や、アクセスできない場合は、招待してくれた人にお問い合わせください。
+    </p>
+  </div>
+</div>
