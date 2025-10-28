@@ -11,14 +11,19 @@
     </li>
   </ul>
 <% else %>
-  <%= form_with(url: invitations_acceptance_path, method: :post, class: "px-3") do |form| %>
-    <p class="mb-3">
-      <%= form.text_field(:code, placeholder: "TT-XXXXXX (招待コード)", class: "w-full") %>
-    </p>
-    <p>
-      <%= form.submit("招待を受ける", class: "w-full bg-blue-500 hover:bg-blue-700 text-white p-2 text-center rounded-sm cursor-pointer") %>
-    </p>
-  <% end %>
+  <div class="p-4">
+    <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-4">
+      <p class="text-green-800">
+        <strong>✅ ようこそ！</strong><br>
+        Teacher TeacherのDiscordサーバに参加できているかご確認ください。
+      </p>
+    </div>
+    <div class="bg-gray-50 border border-gray-200 rounded p-4">
+      <p class="text-gray-700 text-sm">
+        Discordアプリを開いて、サーバー一覧に「Teacher Teacher」が表示されていることを確認してください。
+      </p>
+    </div>
+  </div>
 <% end %>
 
 <p class="text-center mt-8 p-4">
