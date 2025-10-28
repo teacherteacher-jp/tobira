@@ -11,12 +11,12 @@ on:
     types: [submitted]
 
 jobs:
-  claude:
+  claude-code:
     if: |
       (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
       (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
       (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
-      (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
+      (github.event_name == 'issues' && contains(github.event.issue.body, '@claude'))
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -32,11 +32,10 @@ jobs:
           fetch-depth: 1
 
       - name: Run Claude Code
-        id: claude
-        uses: anthropics/claude-code-action@beta
+        uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          allowed_tools: "Agent,Bash,Edit,MultiEdit,WebFetch,WebSearch,Write"
-          custom_instructions: |
-            - 日本語で会話すること
-            - コードレビューや質問に対して、具体的で建設的なフィードバックを提供すること
+          claude_args: |
+            --allowedTools "Agent,Bash,Edit,MultiEdit,WebFetch,WebSearch,Write"
+            --system-prompt '- 日本語で会話すること
+            - コードレビューや質問に対して、具体的で建設的なフィードバックを提供すること'
