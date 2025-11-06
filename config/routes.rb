@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get    "/auth/discord/callback",    to: "sessions#create"
   delete "/session",                  to: "sessions#destroy", as: "session"
   get    "/gate",                     to: "gate#index"
+  get    "/login",                    to: "login#index"
   get    "/invitations",              to: "invitations#index"
   post   "/invitations",              to: "invitations#create"
   get    "/invitations/already_used", to: "invitations/already_used#index"
