@@ -24,4 +24,17 @@ class SessionsController < ActionController::Base
     log_out
     redirect_to gate_path
   end
+
+  def failure
+    error_type = request.env["omniauth.error.type"] || params[:message]
+
+    error_message = case error_type.to_s
+    when "access_denied"
+      "Discordでの認証が拒否されました。Discordアカウントのメールアドレスまたは電話番号の確認が済んでいない場合は、先にDiscordの設定で確認を完了してください。"
+    else
+      "Discordでのログインに失敗しました。時間をおいて再度お試しください。"
+    end
+
+    redirect_to login_path, alert: error_message
+  end
 end

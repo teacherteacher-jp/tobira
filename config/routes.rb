@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   get    "/auth/discord/callback",    to: "sessions#create"
+  get    "/auth/failure",             to: "sessions#failure"
   delete "/session",                  to: "sessions#destroy", as: "session"
   get    "/gate",                     to: "gate#index"
   get    "/login",                    to: "login#index"

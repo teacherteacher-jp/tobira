@@ -55,6 +55,14 @@
     </p>
   </div>
 
+  <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-6">
+    <p class="text-yellow-800 text-sm font-bold mb-1">⚠️ 認証できない場合</p>
+    <p class="text-yellow-700 text-sm mb-3">
+      Discordで以下のような画面が表示される場合は、先にDiscordの設定でメールアドレスまたは電話番号の確認を完了してください。
+    </p>
+    <%= image_tag("verify-email-first.jpg", alt: "Discordのエラー画面", class: "rounded-lg shadow-sm") %>
+  </div>
+
   <div class="mt-4 text-center">
     <p class="text-gray-600 text-sm">
       招待コード: <span class="font-mono bg-gray-200 px-2 py-1 rounded"><%= @code %></span>
