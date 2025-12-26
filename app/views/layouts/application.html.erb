@@ -30,6 +30,10 @@
         <p class="mx-3 mb-3 p-3 bg-green-500 text-white rounded-sm"><%= notice %></p>
       <% end %>
 
+      <% if alert %>
+        <p class="mx-3 mb-3 p-3 bg-red-500 text-white rounded-sm"><%= alert %></p>
+      <% end %>
+
       <%= yield %>
     </div>
   </body>
